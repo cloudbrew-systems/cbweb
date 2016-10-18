@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" type="image/png" href="/assets/img/cloudbrew_icon_16x16.ico" sizes="16x16">
+        <link rel="icon" type="image/png" href="/assets/img/cloudbrew_icon_32x32.ico" sizes="32x32">
+        <link rel="icon" type="image/png" href="/assets/img/cloudbrew_icon_64x64.ico" sizes="64x64">
+		<title>Subscribe | CloudBrew</title>
+		<link href="/landingpage/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/landingpage/css/font-awesome.min.css" rel="stylesheet"> 
+		<link href="/landingpage/css/main.css" rel="stylesheet">
+		<link href="/landingpage/css/responsive.css" rel="stylesheet">
+
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->       
+		<script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-71253533-1', 'auto');
+          ga('send', 'pageview',location.pathname);
+
+        </script>
+	</head><!--/head-->
+
+	<body>
+		<header id="header">      
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 overflow">
+                       <div class="social-icons pull-right">
+                            <ul class="nav nav-pills">
+                                <li><a href="https://www.facebook.com/cloudbrew.io" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/CloudBrew_io" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://plus.google.com/+CloudbrewIo2016" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                                <li><a href="https://www.linkedin.com/company/cloudbrew-labs-llp" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div> 
+                    </div>
+                 </div>
+            </div>
+            <div class="navbar navbar-inverse" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" href="/">
+                        	<h1><img src="/landingpage/images/logo_top_blue.png" alt="CloudBrew" style="height: 90px;"></h1>
+                        </a>
+                        
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                        	<li><a href="/">Home</a></li>
+                            <li><a href="/about">About Us</a></li>
+                            <li class="active"><a href="/subscribe">Subscribe</a></li>
+                            <li><a href="/login">Login</a></li>
+                        </ul>
+                    </div>
+                    <%
+                    /*
+                    <div class="search">
+                        <form role="form">
+                            <i class="fa fa-search"></i>
+                            <div class="field-toggle">
+                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                            </div>
+                        </form>
+                    </div>
+                    */
+                    %>
+                </div>
+            </div>
+        </header>
+
+        <section id="page-breadcrumb">
+            <div class="vertical-center sun">
+                 <div class="container">
+                    <div class="row">
+                        <div class="action">
+                            <div class="col-sm-12">
+                                <h1 class="title">Subscribe</h1>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+       </section>
+		<section id="subscribe" class="padding-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="row">
+							<div class="col-sm-12" style="text-align:center;">
+								<h2><i class="fa fa-envelope-o"></i> ENROLL FOR INVITATION</h2>
+								<p>CloudBrew is currently invite only. Join our wait list.</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 newsletter">
+								<form id="newsletter" method="POST" action="/requestsubscribe">
+									<input class="form-control" type="email" name="email"  value="" placeholder="Enter Your email">
+									<a href="javascript:$('#newsletter').submit();">
+										<i class="fa fa-check"></i>
+									</a>
+									<p style="color:red;">Incorrect email, please try again</p>
+								</form>
+							</div>    
+						</div>
+					</div>     
+				</div>
+			</div> 
+		</section>
+
+		<section id="coming-soon-footer" class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="text-center">
+						<p>&copy; CloudBrew Labs 2016. All Rights Reserved.</p>
+					</div>
+				</div>
+			</div>       
+		</section>
+		
+
+		<script type="text/javascript" src="/landingpage/js/jquery.js"></script>
+		<script type="text/javascript" src="/landingpage/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/landingpage/js/wow.min.js"></script>
+		<script type="text/javascript" src="/landingpage/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+/*body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+*/
+#top_bar .md-top-bar>ul>li.current_section>a .menu_title {
+    color: #1976D2 !important;
+}
+
+#top_bar .md-top-bar>ul>li.current_section>a>.menu_icon .material-icons {
+    color: #1976D2 !important;
+}
+
+.main_logo_top>a img {
+    max-height: 65px !important;
+}

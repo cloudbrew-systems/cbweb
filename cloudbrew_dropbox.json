@@ -1,0 +1,1 @@
+{"web":{"client_id":"v4o9moaq0we0lwj","auth_uri":"https://www.dropbox.com/1/oauth2/authorize","token_uri":"https://api.dropboxapi.com/1/oauth2/token","client_secret":"8ujc0xvutf15n6w","redirect_uris":["http://127.0.0.1:3000/api/dropbox"]}}
