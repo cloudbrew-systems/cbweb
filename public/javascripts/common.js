@@ -103,16 +103,67 @@ function fileupload(div_id,url) {
 		complete: function() {
 			
 		},
-		success: function(json) {
-			if (json.success === 1) {
-				var data = new Array();
-				data.push({name:'token',value:json.token});
-				data.push({name:'file',value:json.filename});
-				dataSubmit('/api/fileuploadcheck', data, false, pollfileupload)
-			} else if(json.success === 0) {
+		success: function(data) {
+			if (data.success === 1) {
+				altair_md.init();
+				var html = '';
+				html += '<div id="'+data._id+'">';
+		        html += '<div class="md-card md-card-hover md-card-overlay" style="border-radius: 15px;">';
+		      	html += '<div class="md-card-content">';
+		        html += '<div>';
+		        html += '<img src="/images/file.png" style="height: 110px;">';
+		        html += '<div style="z-index: 1000;margin-top: -40px;">';
+		        html += data.filetype.toUpperCase();
+		        html += '</div>';
+		        html += '</div>';
+		        html += '</div>';
+		        html += '<div class="md-card-overlay-content">';
+		        html += '<div class="uk-clearfix md-card-overlay-header">';
+		        html += '<i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>';
+		        html += '<h3>';
+		        html += data.filename;
+		        html += '</h3>';
+		        html += '</div>';
+		        html += '<p>';
+		        html += '<strong>Name: </strong> '+data.filename;
+		        html += '<br/>';
+		        if(typeof(data.filesize) !== 'undefined') {
+			        html += '<strong>Size: </strong> ';
+			        if((parseInt(data.filesize) / 1073741824) > 1) {
+			        	html += (parseInt(data.filesize) / 1073741824).toFixed(2) + ' GB';
+			        } else if((parseInt(data.filesize) / 1048576) > 1) {
+			        	html += (parseInt(data.filesize) / 1048576).toFixed(2) + ' MB';
+			        } else if((parseInt(data.filesize) / 1024) > 1) {
+			        	html += (parseInt(data.filesize) / 1024).toFixed(2) + ' KB';
+			        } else {
+			        	html += data.filesize + ' B';
+			        }
+			        html += '<br/>';
+		    	}
+		        html += '</p>';
+		        html += '<div class="uk-grid uk-grid-small">';
+		        html += '<div class="uk-width-medium-1-2">';
+		        html += '<button class="md-btn md-btn-success md-btn-block md-btn-wave-light waves-effect waves-button waves-light" onclick="downloadfile(\''+data._id+'\', false)" title="Download File">';
+		        html += '<i class="material-icons md-24 md-color-white">&#xE2C0;</i>';
+		        html += '</button>';
+		        html += '</div>';
+		        html += '<div class="uk-width-medium-1-2">';
+		        html += '<button class="md-btn md-btn-danger md-btn-block md-btn-wave-light waves-effect waves-button waves-light" onclick="UIkit.modal.confirm(\'Do you really want to delete this file?\', function(){ deletefile(\''+data._id+'\', false); });" title="Delete File">';
+		        html += '<i class="material-icons md-24 md-color-white">&#xE872;</i>';
+		        html += '</button>';
+		        html += '</div>';
+		        html += '</div>';
+		        html += '</div>';
+		        html += '</div>';
+		        html += '</div>';
+		        $('#file_grid').append(html);
+		        altair_md.init();
+		        html = '';
+		        UIkit.modal("#spinner_dialogue").hide();
+			} else if(data.success === 0) {
 				UIkit.modal("#spinner_dialogue").hide();
        			UIkit.notify({
-				    message : 'File Upload Error: '+json.msg,
+				    message : 'File Upload Error: '+data.msg,
 				    status  : 'danger',
 				    timeout : 5000,
 				    pos     : 'top-center'
@@ -123,73 +174,6 @@ function fileupload(div_id,url) {
 			
 		}
 	});
-}
-
-function pollfileupload(data) {
-	if (data.success === 1) {
-		// setTimeout(function(){
-		var polldata = new Array();
-		polldata.push({name:'token',value:data.token});
-		polldata.push({name:'file',value:data.filename});
-		dataSubmit('/api/fileuploadcheck', polldata, false, pollfileupload);
-		// },1000);
-	} else if (data.success === 0) {
-		altair_md.init();
-		var html = '';
-		html += '<div id="'+data._id+'">';
-        html += '<div class="md-card md-card-hover md-card-overlay" style="border-radius: 15px;">';
-      	html += '<div class="md-card-content">';
-        html += '<div>';
-        html += '<img src="/images/file.png" style="height: 110px;">';
-        html += '<div style="z-index: 1000;margin-top: -40px;">';
-        html += data.filetype.toUpperCase();
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '<div class="md-card-overlay-content">';
-        html += '<div class="uk-clearfix md-card-overlay-header">';
-        html += '<i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>';
-        html += '<h3>';
-        html += data.filename;
-        html += '</h3>';
-        html += '</div>';
-        html += '<p>';
-        html += '<strong>Name: </strong> '+data.filename;
-        html += '<br/>';
-        if(typeof(data.filesize) !== 'undefined') {
-	        html += '<strong>Size: </strong> ';
-	        if((parseInt(data.filesize) / 1073741824) > 1) {
-	        	html += (parseInt(data.filesize) / 1073741824).toFixed(2) + ' GB';
-	        } else if((parseInt(data.filesize) / 1048576) > 1) {
-	        	html += (parseInt(data.filesize) / 1048576).toFixed(2) + ' MB';
-	        } else if((parseInt(data.filesize) / 1024) > 1) {
-	        	html += (parseInt(data.filesize) / 1024).toFixed(2) + ' KB';
-	        } else {
-	        	html += data.filesize + ' B';
-	        }
-	        html += '<br/>';
-    	}
-        html += '</p>';
-        html += '<div class="uk-grid uk-grid-small">';
-        html += '<div class="uk-width-medium-1-2">';
-        html += '<button class="md-btn md-btn-success md-btn-block md-btn-wave-light waves-effect waves-button waves-light" onclick="downloadfile(\''+data._id+'\', false)" title="Download File">';
-        html += '<i class="material-icons md-24 md-color-white">&#xE2C0;</i>';
-        html += '</button>';
-        html += '</div>';
-        html += '<div class="uk-width-medium-1-2">';
-        html += '<button class="md-btn md-btn-danger md-btn-block md-btn-wave-light waves-effect waves-button waves-light" onclick="UIkit.modal.confirm(\'Do you really want to delete this file?\', function(){ deletefile(\''+data._id+'\', false); });" title="Delete File">';
-        html += '<i class="material-icons md-24 md-color-white">&#xE872;</i>';
-        html += '</button>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        $('#file_grid').append(html);
-        altair_md.init();
-        html = '';
-        UIkit.modal("#spinner_dialogue").hide();
-    }
 }
 
 function signin(data) {
@@ -266,15 +250,10 @@ function downloadfile(id, btn_elem) {
 }
 
 function checkfiledownload(data) {
-	if (data.success === 1) {
-		var polldata = new Array();
-		polldata.push({name: 'token', value: data.token});
-		polldata.push({name: 'file', value: data.file});
-		dataSubmit('/api/filedownloadcheck', polldata, false, checkfiledownload);
-	} else if(data.success === 0) {
-		UIkit.modal("#spinner_dialogue").hide();
+	if(data.success === 1) {
 		var filedata=data.file;
-	  	$('<form action="/api/download" method="POST">' + 
+		UIkit.modal("#spinner_dialogue").hide();
+		$('<form action="/api/download" method="POST">' + 
 	    	'<input type="hidden" name="file" value="' + filedata+ '">' +
 	    	'</form>').appendTo('body').submit();
 	} else {
