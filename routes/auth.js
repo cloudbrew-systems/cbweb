@@ -92,7 +92,7 @@ module.exports = function(passport){
 						validate.valid = '1';
 						var client = nodemailer.createTransport(sgTransport(options));
 						var email = {
-					  		from: 'CloudBrew abhinava@cloudbrewlabs.com',
+					  		from: 'CloudBrew info@cloudbrew.io',
 						  	to: email_id,
 						  	subject: 'Reset Password',
 						  	html: '<!DOCTYPE html><html><head><title></title></head><body>Hi,<br/><br/>Your request for reseting your password has been successful.<br/><br/>Please follow the following link to reset your password '+req.headers.origin+'/reset?validate='+rand_string+'.<br/><br/>Link will expire in 24 hours. If you haven\'t requested to change your password please ignore.<br/><br/>Thanks,<br/><strong>Team CloudBrew</strong></body></html>'
@@ -116,7 +116,7 @@ module.exports = function(passport){
 							});
 						});
 					} else {
-						res.json({success: 0, msg: 'Invalid email. Please contact admin at abhinava@cloudbrewlabs.com'});
+						res.json({success: 0, msg: 'Invalid email. Please contact admin at info@cloudbrew.io'});
 					}
 				} else {
 					res.json({success: 0, msg: 'User is not registered'});
@@ -149,7 +149,7 @@ module.exports = function(passport){
 						});
 					});
 				} else {
-					res.json({success: 0, msg: 'Error in updating password. If problem persist, please mail to abhinava@cloudbrewlabs.com'})
+					res.json({success: 0, msg: 'Error updating password. If problem persists, please contact admin at info@cloudbrew.io'})
 				}
 			});
 		} else {

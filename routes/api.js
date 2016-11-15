@@ -1069,7 +1069,7 @@ router.post('/invite',function(req,res,next){
 								callback();
 							} else {
 								var email = {
-									from: 'CloudBrew info@cloudbrewlabs.com',
+									from: 'CloudBrew info@cloudbrew.io',
 									to: item.trim(),
 									subject: 'Invite',
 									html: 'Dear User,<br/><br/>You have been invited to be part of CloudBrew community by '+req.user.email+' . Please click on the following link to visit website <a href="https://www.cloudbrew.io">CloudBrew Website</a>.<br/><br/>Cheers,<br/>CloudBrew Team'
