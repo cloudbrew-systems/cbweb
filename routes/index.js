@@ -86,7 +86,7 @@ router.post('/requestsubscribe', IsAuthenticated, function(req, res, next) {
 					}
 					client.sendMail(email, function(err, info){
 				    	if (err ){
-				      		console.log(error);
+				      		console.log(err);
 				      		res.redirect('/subscribe/success');
 					    }
 					    else {
