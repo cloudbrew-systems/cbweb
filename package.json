@@ -28,7 +28,7 @@
     "http-proxy": "^1.13.2",
     "https": "^1.0.0",
     "mongojs": "^2.2.2",
-    "mongoose": "^4.3.5",
+    "mongoose": "^5.7.7",
     "morgan": "~1.6.1",
     "multiparty": "^4.1.2",
     "nodemailer": "^2.2.1",
