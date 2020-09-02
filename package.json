@@ -23,7 +23,7 @@
     "express": "~4.13.1",
     "express-session": "^1.12.1",
     "google-auth-library": "^0.9.7",
-    "googleapis": "^2.1.7",
+    "googleapis": "^59.0.0",
     "http-post": "^0.1.1",
     "http-proxy": "^1.13.2",
     "https": "^1.0.0",
